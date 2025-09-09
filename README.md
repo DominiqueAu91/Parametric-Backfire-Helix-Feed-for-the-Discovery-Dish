@@ -15,10 +15,11 @@ This started as a **radio-astronomy feed** around **1520 MHz**. It quickly becam
 
 ## Quick theory
 
-- \( \lambda = \dfrac{c}{f} \)
-- Circumference \(C \approx k\,\lambda\) (use \(k\approx 1\) for backfire) ⇒ \( D = \dfrac{k\,\lambda}{\pi} \)
-- Pitch per turn from pitch angle \( \alpha \): \( p = \pi D \tan \alpha \) (default \( \alpha = 14^\circ \))
-- Donut inner diameter ≈ \(0.29\,\lambda\)
+- λ = c / f
+- Circumference C ≈ k·λ (use k ≈ 1 for backfire) → D = k·λ / π
+- Pitch per turn from pitch angle α:  
+  p = π·D·tan(α)  (default α = 14°)
+- Donut inner diameter ≈ 0.29·λ
 
 ## Key OpenSCAD parameters
 
