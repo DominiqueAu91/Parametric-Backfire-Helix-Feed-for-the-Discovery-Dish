@@ -36,7 +36,13 @@ See **BANDS.md** for L/S-band presets (GNSS, HRIT/HRPT, TT&C, 13 cm Amateur, Glo
 
 ## Matching (¼-wave transformer)
 
-Typical backfire single-wire helix \(Z_\text{feed}\sim120–150\,\Omega\). Use \( Z_t=\sqrt{50\,Z_\text{feed}} \) and a λ/4 section (coax or microstrip/twin-line) near the feed point; trim the first fraction of a turn for fine-tuning.
+Typical backfire single-wire helix impedance: `Z_feed ≈ 120–150 Ω`.  
+Use a **quarter-wave transformer** with characteristic impedance: Z_t = √(50 · Z_feed)
+
+Example: if `Z_feed = 125 Ω` → `Z_t ≈ 79 Ω`.  
+
+Implement with a λ/4 section of coax, twin-line, or microstrip near the feed point.  
+Fine-tune by trimming the first fraction of a turn.  
 
 ## Printing & assembly
 
