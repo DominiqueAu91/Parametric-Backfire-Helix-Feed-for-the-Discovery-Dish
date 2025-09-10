@@ -97,4 +97,4 @@ PETG ~20% infill; use the red helix preview to pre-check the wire path. Put the 
 
 - This repo (OpenSCAD + plugin + docs): **CC0**
 - Digitelektro / BackfireHelix: **GPL-3.0** — keep attribution & GPL if you reuse their PCB files.
-- Classic backfire references: **Nakano & Yamauchi (IEEE)**, **W1GHZ** notes.
+- Classic backfire references: **Nakano & Yamauchi (IEEE)**, **W1GHZ**, **N1BWT** notes.
