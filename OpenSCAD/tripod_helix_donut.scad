@@ -22,17 +22,17 @@ helix_phase0_deg      = 0;       // initial phase (deg)
 // Donut reflector
 reflector_inner_factor = 0.29;   // donut inner = 0.29·λ (default backfire)
 reflector_outer_d_mm   = 0;      // fixed outer diameter (mm); 0 => use factor below
-reflector_outer_factor = 0.90;   // donut outer = factor·λ when outer_d_mm == 0
-base_thick            = 4;
+reflector_outer_factor = 0.45;   // donut outer = factor·λ when outer_d_mm == 0
+base_thick            = 3;
 
 // Bolt circle (optional)
 bolt_hole_count       = 3;
-bolt_circle_d         = 54;
-bolt_hole_d           = 4.5;
-bolt_angle0_deg       = 0;
+bolt_circle_d         = 51.5;
+bolt_hole_d           = 3.5;
+bolt_angle0_deg       = 60;
 
 // Make posts bite a few mm *inside* helix radius so the channel intersects
-support_inset_mm      = 2.0;     // 2–4 mm typical
+support_inset_mm      = 3.5;     // 2–4 mm typical
 
 // Helix channel (subtraction)
 wire_d                = 2.0;     // wire diameter
@@ -40,16 +40,16 @@ wire_clearance        = 0.6;     // extra clearance
 helix_step_deg        = 6;       // helix discretization (3..10)
 
 // Trapezoidal supports (plan XY), extruded over H_total
-support_w_outer       = 18;      // tangential width near donut
-support_w_inner       = 9;       // tangential width near center
+support_w_outer       = 15;      // tangential width near donut
+support_w_inner       = 5;       // tangential width near center
 support_outer_margin  = 6;       // setback from donut outer edge (mm)
 
 // Vertical gussets (radial plane); flat top, sloped bottom
 gusset_enable         = true;
 gusset_thick          = 2.8;     // tangential thickness (centered)
 gusset_top_h          = 10;      // z_top - z_center_base (height of flat top)
-gusset_center_thick   = 1.2;     // vertical thickness at center (min)
-gusset_post_thick     = 6.0;     // vertical thickness at support (target)
+gusset_center_thick   = 3.5;     // vertical thickness at center (min)
+gusset_post_thick     = 20.0;     // vertical thickness at support (target)
 gusset_angle_max_deg  = 45;      // max printable slope for bottom
 gusset_embed_rad      = 1.5;     // radial embed into support (mm)
 gusset_tan_over       = 1.20;    // tan_thick = max(gusset_thick, support_w_inner*1.20)
