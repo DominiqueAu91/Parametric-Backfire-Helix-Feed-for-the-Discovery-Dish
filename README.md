@@ -92,6 +92,40 @@ Fine-tune by trimming the first fraction of a turn.
 ## Printing & assembly
 
 PETG ~20% infill; use the red helix preview to pre-check the wire path. Put the LNA right behind the reflector (shadowed), bias-T at the SDR. Keep unintended metal away from the donut edge; **0.29·λ** inner diameter is RF-critical.
+## Additional Files and Quick Start
+
+Alongside the parametric OpenSCAD sources, two key design files are provided:
+
+- **`tripod_helix_donut.scad`**  
+  Parametric model of the backfire helix feed support with tripod posts, gussets, and donut base.  
+  Fully customizable: frequency, reflector diameter, number of turns, pitch angle, etc.  
+  Designed to generate a mechanically robust feed suitable for use at the focal point of the Discovery Dish or other parabolic reflectors.
+
+- **`para_extension_tube_inserts_M3.scad`**  
+  Parametric design of the extension tube adapter.  
+  This tube fits between Digitelektro’s *Discovery Dish helix adapter* and the backfire helix feed.  
+  Its purpose is to house and protect an LNA (e.g. **SPF5189Z**), filter (e.g. **Mini-Circuits VHF 1200+**) and a Bias-T immediately behind the helix reflector, in the geometric shadow of the reflector.  
+  It supports Ruthex threaded inserts (M3 or M4), making it easy to switch between different feeds (L-band and S-band) while maintaining strong mechanical stability.
+
+### Pre-generated STL Files
+
+For convenience, **STL files are provided for the 1420.42 MHz hydrogen line (H I radio astronomy)** configuration.  
+These can be directly printed — PETG recommended, ≥20% infill — to assemble a ready-to-use feed for neutral hydrogen observations.
+
+### Quick Start
+
+1. If your goal is **1420 MHz radio astronomy (hydrogen line)**:  
+   - Print the supplied STL files directly.  
+   - Mount the backfire helix feed on your Discovery Dish using the extension tube.  
+   - Insert your LNA + Bias-T inside the tube.
+
+2. If you want to explore **other bands**:  
+   - Open `tripod_helix_donut.scad` in OpenSCAD.  
+   - Adjust parameters (frequency, turns, reflector diameter, polarization).  
+   - Export your own STL for printing.  
+   - Optional: use `para_extension_tube_inserts_M3.scad` if you need the protected LNA/Bias-T housing.
+
+This makes the project **plug-and-play** for hydrogen line observations while still giving full flexibility for other L-band and S-band satellite experiments.
 
 ## Licensing & credits
 
