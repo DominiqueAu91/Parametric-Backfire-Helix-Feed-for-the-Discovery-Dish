@@ -10,7 +10,7 @@ $fn = 96;
 // ------------------------- User Parameters -------------------------
 
 // Core tube
-length_mm        = 95;   // extension length
+length_mm        = 120;   // extension length
 id_mm            = 40;   // inner diameter
 wall_mm          = 3;    // wall thickness
 center_hole_A_d  = 40;   // central through-hole on flange A (Discovery side)
@@ -33,9 +33,9 @@ flangeA = [
 
 flangeB = [
   "thickness",   30,   // thicker, typically the tapered one
-  "outer_d",     60,
+  "outer_d",     80,
   "hole_count",  3,
-  "bcd",         51.5,
+  "bcd",         72.0,
   "hole_d",      3.2,  // unused now (kept for compatibility)
   "angle0_deg",  0,
   // optional features
@@ -46,7 +46,7 @@ flangeB = [
 
 // ---- Inserts on flange B ----
 // Choose size M3/M4 (defaults below) OR override custom values
-insert_size         = "M4";   // "M3" | "M4"
+insert_size         = "M3";   // "M3" | "M4"
 insert_override     = false;  // true -> use custom values below (ignoring size defaults)
 insert_d_outer_M3   = 4.8;    // typical pocket Ø for Ruthex M3 in PLA/PETG
 insert_len_M3       = 5.0;    // pocket depth for M3
