@@ -1,6 +1,7 @@
 # Bands & presets (k = 1.00, pitch angle = 14°)
 | Target band | f (MHz) | λ (mm) | Helix D (mm) | Pitch/turn (mm) | Donut inner ≈ 0.29·λ (mm) |
 |---|---:|---:|---:|---:|---:|
+| H I line | 1420.42 | 211.1 | 67.2 | 52.6 | 61.2 |
 | Radio-astro L | 1520.00 | 197.37 | 62.82 | 49.21 | 57.24 |
 | GNSS L1 | 1575.42 | 190.43 | 60.61 | 47.48 | 55.22 |
 | HRIT/HRPT | 1694.10 | 177.09 | 56.37 | 44.15 | 51.35 |
