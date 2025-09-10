@@ -32,7 +32,7 @@ This started as a **radio-astronomy feed** around **1520 MHz**. It quickly becam
 
 ## Presets
 
-See **BANDS.md** for L/S-band presets (GNSS, HRIT/HRPT, TT&C, 13 cm Amateur, Globalstar).
+See **BANDS.md** for L/S-band presets (H I + Radio-astro, GNSS, HRIT/HRPT, TT&C, 13 cm Amateur, Globalstar).
 
 ## How many turns? (illumination vs f/D)
 
