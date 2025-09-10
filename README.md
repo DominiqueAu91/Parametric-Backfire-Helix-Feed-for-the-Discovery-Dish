@@ -4,7 +4,7 @@
 
 ## Background & motivation
 
-This started as a **radio-astronomy feed** around **1520 MHz**. It quickly became a **parametric OpenSCAD model** and **3D-printable hardware** designed to be **plug-and-play** with **Digitelektro’s Discovery Dish** ecosystem and with an **extension tube** that shelters the **LNA** (plus bias-T) **in the reflector’s shadow**. Goals: switch L/S bands in minutes, **minimize overall NF** (LNA at the feed), and keep a **mechanically & RF-robust** setup for experimentation.
+This started as a **radio-astronomy feed** around **1420 MHz** to detect Milky Way H I line. It quickly became a **parametric OpenSCAD model** and **3D-printable hardware** designed to be **plug-and-play** with **Digitelektro’s Discovery Dish** ecosystem and with an **extension tube** that shelters the **LNA** (plus bias-T) **in the reflector’s shadow**. Goals: switch L/S bands in minutes, **minimize overall NF** (LNA at the feed), and keep a **mechanically & RF-robust** setup for experimentation.
 
 ## What this model does
 
