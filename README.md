@@ -40,6 +40,23 @@ The optimal number of helix turns depends on the dish focal ratio (f/D).
 A dish with smaller f/D (deeper dish) requires a **wider beam** (fewer turns).  
 A dish with larger f/D (shallower dish) requires a **narrower beam** (more turns).
 
+### Choosing the number of turns based on your noise environment
+
+The “optimal” number of turns is not only a function of dish f/D, but also of your RF environment:
+
+- **Quiet rural site:**  
+  Use **~3 turns**. The dish edge is illuminated at about –10 dB, which maximizes aperture efficiency.  
+  Ground spillover is low in quiet sites, so you benefit from the extra effective aperture.
+
+- **Urban or noisy suburban site:**  
+  Consider **5–7 turns**. The beam narrows and under-illuminates the dish (edge taper ≈ –15 to –18 dB).  
+  Although efficiency drops slightly, spillover from the ground and local RFI is strongly reduced.  
+  The effective system noise temperature is lower, so overall SNR can actually improve.
+
+👉 Rule of thumb:  
+- For **radio astronomy, HRPT, or weak-signal work in rural areas** → ~3 turns.  
+- For **general SDR satellite reception in noisy areas** → 5–7 turns.
+
 ### Practical rule
 - Dish edge angle from focus:  
   `θ_edge = arctan(0.5 / (f/D))`  
