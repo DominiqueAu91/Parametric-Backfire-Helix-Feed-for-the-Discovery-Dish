@@ -34,6 +34,33 @@ This started as a **radio-astronomy feed** around **1520 MHz**. It quickly becam
 
 See **BANDS.md** for L/S-band presets (GNSS, HRIT/HRPT, TT&C, 13 cm Amateur, Globalstar).
 
+## How many turns? (illumination vs f/D)
+
+The optimal number of helix turns depends on the dish focal ratio (f/D).  
+A dish with smaller f/D (deeper dish) requires a **wider beam** (fewer turns).  
+A dish with larger f/D (shallower dish) requires a **narrower beam** (more turns).
+
+### Practical rule
+- Dish edge angle from focus:  
+  `θ_edge = arctan(0.5 / (f/D))`  
+- Choose the helix length (number of turns × pitch) so that the **pattern taper at θ_edge** is about **–10 to –13 dB**.  
+  This balances aperture efficiency and noise contribution.
+
+### Typical values (backfire helix, D ≈ λ, pitch angle ≈ 14°)
+- f/D ≈ 0.30 → 3.5–4 turns  
+- f/D ≈ 0.35 → ~3.0 turns (Discovery Dish)  
+- f/D ≈ 0.40 → 2.8–3.2 turns  
+- f/D ≈ 0.45–0.50 → 2.5–3 turns
+
+### Hydrogen line example
+At 1420.42 MHz (`λ ≈ 211 mm`):  
+- Helix diameter `≈ 67.2 mm`  
+- Pitch per turn `≈ 52.6 mm`  
+- For f/D = 0.35 → **3.0 turns** → helix height ≈ 158 mm  
+- Donut inner diameter ≈ `0.29·λ ≈ 61 mm`  
+
+This setting gives a clean illumination of the dish, with proper edge taper for low-noise radio astronomy work.
+
 ## Matching (¼-wave transformer)
 
 Typical backfire single-wire helix impedance: `Z_feed ≈ 120–150 Ω`.  
