@@ -1,6 +1,6 @@
 # Parametric Backfire Helix Feed for the Discovery Dish
 
-**Goal.** A fully parametric **backfire helical feed** (single-wire) for deep prime-focus dishes (e.g., the **Discovery Dish**), supporting **circular polarization** (LHCP/RHCP), printable scaffolding, and an annular reflector (“donut”) sized for backfire operation. The design is plug-and-play with Digitelektro’s ecosystem and my extension tube that houses an **LNA + bias-T** directly behind the reflector to minimize system noise figure.
+**Goal.** A fully parametric **backfire helical feed** (single-wire) for deep prime-focus dishes (e.g., the **Discovery Dish**), supporting **circular polarization** (LHCP/RHCP), printable scaffolding, and an annular reflector (“donut”) sized for backfire operation. The design is plug-and-play with **Digitelektro’s ecosystem** (see third_party folder) and my extension tube that houses an **LNA + bias-T** directly behind the reflector to minimize system noise figure.
 
 ## Background & motivation
 
