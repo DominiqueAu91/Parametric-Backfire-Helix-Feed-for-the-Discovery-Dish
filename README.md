@@ -103,7 +103,7 @@ Alongside the parametric OpenSCAD sources, two key design files are provided:
 
 - **`para_extension_tube_inserts_M3.scad`**  
   Parametric design of the extension tube adapter.  
-  This tube fits between Digitelektro’s *Discovery Dish helix adapter* and the backfire helix feed.  
+  This tube fits between **Digitelektro’s backfire_helix_adapter_for_discovery_dish** (see third_party folder) and the backfire helix feed.  
   Its purpose is to house and protect an LNA (e.g. **SPF5189Z**), filter (e.g. **Mini-Circuits VHF 1200+**) and a Bias-T immediately behind the helix reflector, in the geometric shadow of the reflector.  
   It supports Ruthex threaded inserts (M3 or M4), making it easy to switch between different feeds (L-band and S-band) while maintaining strong mechanical stability.
 
