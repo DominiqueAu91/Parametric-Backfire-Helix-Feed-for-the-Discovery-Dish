@@ -3,6 +3,7 @@ Summary
 Update 24-02-2025: 
 
 **Added an adapter which can be used to mount the backfire helix on a Discovery dish**
+
 Added S-band version scaffold
 This feed is suitable for deep prime focus dishes with an f/D ratio ranging from 0.3 to 0.5. Considering the mirroring effect the dish has on signal polarization, this feed is designed as LHCP; with the dish flipping it, making reception of RHCP satellite signals suitable.
 The original aim was to build a circularly polarized feed for the popular grid dish that comes with a linear polarized dipole feed. This design proven to work well not just with the grid dish, but any other deep dishes. The feed holder is designed for the Nooelec L-band grid dish, other dishes needs their own feed holder. 
