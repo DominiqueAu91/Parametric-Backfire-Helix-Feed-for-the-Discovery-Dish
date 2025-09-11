@@ -126,6 +126,66 @@ These can be directly printed — PETG recommended, ≥20% infill — to assembl
    - Optional: use `para_extension_tube_inserts_M3.scad` if you need the protected LNA/Bias-T housing.
 
 This makes the project **plug-and-play** for hydrogen line observations while still giving full flexibility for other L-band and S-band satellite experiments.
+## Generating Gerber Files for Your Custom Reflector Disk
+
+This project includes a KiCad 8 **action plugin** (`donut_reflector_disk_sma.py`) to generate a parametric round reflector PCB with:
+
+- **Circular Edge.Cuts outline**  
+- **Ground planes (F.Cu & B.Cu)** tied to the SMA ground pins  
+- **Optional soldermask opening** (bare copper reflector)  
+- **Centered CONSMA001-C-G SMA footprint** (square GND pads)  
+- **Custom silkscreen label**
+
+### Steps to Generate Gerbers
+
+1. **Run the plugin**  
+   - In KiCad PCB Editor:  
+     `Tools → External Plugins → Parametric Reflector Disk + SMA`  
+   - Enter:
+     - Frequency in MHz (auto-calculates reflector diameter = 0.29·λ)  
+     - Custom silkscreen label  
+     - Option: open soldermask (bare copper)  
+
+2. **Verify in PCB Editor**  
+   - Confirm the reflector disk outline is present.  
+   - Ensure the copper zones fill properly and connect to the SMA ground pins.  
+   - Use the **Highlight Net** tool: selecting any SMA ground pin should highlight the whole disk.
+
+3. **Generate Gerbers**  
+   - Go to: `File → Plot…`  
+   - Choose **Gerber** format.  
+   - Enable at least these layers:
+     - `F.Cu`, `B.Cu`  
+     - `F.Mask`, `B.Mask`  
+     - `F.SilkS` (optional, for label)  
+     - `Edge.Cuts` (always required)  
+   - Click **Plot**.
+
+4. **Generate Drill Files**  
+   - In the same dialog, click **Generate Drill Files…**  
+   - Select **Excellon format** and include **PTH drills**.  
+   - Click **Generate Drill File**.
+
+5. **Check with Gerber Viewer**  
+   - Open the output in KiCad’s **GerbView**.  
+   - Confirm:
+     - Copper fills are present on both sides.  
+     - Mask opening (if enabled) exposes the reflector area.  
+     - Drill holes are correct for the SMA center pin and ground legs.  
+
+6. **Prepare for Fabrication**  
+   - Zip the Gerber and drill files.  
+   - Upload to your fab (e.g., JLCPCB).  
+   - Recommended JLCPCB options:
+     - Material: FR-4, 1.6 mm  
+     - Copper: 1 oz  
+     - Surface finish: ENIG (1U")  
+     - Soldermask: Black (or your choice)  
+     - Silkscreen: White  
+
+---
+
+👉 With this workflow you can generate **custom reflector disks** for any band (L-band, S-band, hydrogen line at 1420 MHz, etc.) simply by entering the frequency in the plugin dialog.
 
 ## Licensing & credits
 
