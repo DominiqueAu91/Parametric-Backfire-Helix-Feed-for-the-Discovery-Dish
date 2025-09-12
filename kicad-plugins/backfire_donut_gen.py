@@ -1,6 +1,6 @@
-# donut_reflector_disk_sma.py  — KiCad 8
+# # donut_reflector_disk_sma.py  — KiCad 8
 # Round reflector PCB: Edge.Cuts circle, GND zones (F/B), optional mask-open,
-# centered TE CONSMA001-C-G SMA, silkscreen label, plus frequency→diameter calculator.
+# centered chinese SMA (and provision for TE CONSMA001-C-G SMA), silkscreen label, plus frequency→diameter calculator.
 
 import math
 import wx
@@ -136,6 +136,71 @@ def add_sma_consma001_cg(board, at_xy=(0.0, 0.0), square_gnd=True):
 
     board.Add(fp)
     return fp
+    
+def add_sma_china_6x6_inner4mm(board, at_xy=(0.0, 0.0),
+                               center_drill=1.35, center_pad=2.20,
+                               lug_drill=1.30, lug_w=2.40, lug_h=1.80,
+                               offset=2.00):
+    """
+    SMA femelle THT type 'chinois' :
+      - Plateau 6x6 mm, entraxe interne 4 mm -> pattes GND à (±2.0, ±2.0)
+      - Pin central : perçage ~1.35 mm, pad ~2.20 mm (Pad 1, net RF)
+      - 4 pattes GND : perçage ~1.30 mm, pad round-rect 2.40 x 1.80 mm (Pads 2..5, net GND)
+    """
+    fp = pcbnew.FOOTPRINT(board)
+    fp.SetReference("J1")
+    fp.SetValue("SMA_THT_4Lug_6x6_Inner4")
+    fp.SetPosition(pt_mm(at_xy[0], at_xy[1]))
+
+    net_rf  = ensure_net(board, "RF")
+    net_gnd = ensure_net(board, "GND")
+
+    # repère soie
+    ring = pcbnew.PCB_SHAPE(fp)
+    ring.SetShape(pcbnew.SHAPE_T_CIRCLE)
+    ring.SetLayer(pcbnew.F_SilkS)
+    ring.SetCenter(pt_mm(0,0)); ring.SetEnd(pt_mm(3.0,0))
+    ring.SetWidth(mm(0.12)); fp.Add(ring)
+
+    # Pad 1 : RF (rond)
+    p1 = pcbnew.PAD(fp)
+    p1.SetName("1"); p1.SetShape(pcbnew.PAD_SHAPE_CIRCLE)
+    p1.SetPosition(pt_mm(0,0))
+    p1.SetDrillSize(sz_mm(center_drill, center_drill))
+    p1.SetSize(sz_mm(center_pad, center_pad))
+    p1.SetLayerSet(pcbnew.LSET.AllCuMask())
+    try: p1.SetAttribute(pcbnew.PAD_ATTRIB_THROUGH_HOLE)
+    except Exception: pass
+    p1.SetNet(net_rf); fp.Add(p1)
+
+    # Pads 2..5 : GND (round-rect), positions carrées ±offset
+    for idx, (x,y) in enumerate([( +offset, +offset ),
+                                 ( +offset, -offset ),
+                                 ( -offset, +offset ),
+                                 ( -offset, -offset )], start=2):
+        p = pcbnew.PAD(fp)
+        p.SetName(str(idx))
+        p.SetShape(pcbnew.PAD_SHAPE_ROUNDRECT)
+        p.SetRoundRectRadiusRatio(0.25)
+        p.SetPosition(pt_mm(x, y))
+        p.SetDrillSize(sz_mm(lug_drill, lug_drill))
+        p.SetSize(sz_mm(lug_w, lug_h))
+        p.SetLayerSet(pcbnew.LSET.AllCuMask())
+        try: p.SetAttribute(pcbnew.PAD_ATTRIB_THROUGH_HOLE)
+        except Exception: pass
+        p.SetNet(net_gnd)
+        fp.Add(p)
+
+    # contours F.Fab 6x6 et Courtyard 6x6 + 0.6
+    for layer, half, w in [(pcbnew.F_Fab, 3.0, 0.12), (pcbnew.F_CrtYd, 3.6, 0.05)]:
+        def L(a,b): 
+            ln=pcbnew.PCB_SHAPE(fp); ln.SetShape(pcbnew.SHAPE_T_SEGMENT)
+            ln.SetLayer(layer); ln.SetStart(pt_mm(a[0],a[1])); ln.SetEnd(pt_mm(b[0],b[1])); ln.SetWidth(mm(w)); fp.Add(ln)
+        L((-half,-half),( half,-half)); L(( half,-half),( half, half))
+        L(( half, half),(-half, half)); L((-half, half),(-half,-half))
+
+    board.Add(fp)
+    return fp
 
 # ----------------- dialog -----------------
 class ReflectorDialog(wx.Dialog):
@@ -252,9 +317,13 @@ class DonutReflectorWithSMA(pcbnew.ActionPlugin):
         if open_mask:
             add_filled_circle(board, pcbnew.F_Mask, center, disk_d_mm)
             add_filled_circle(board, pcbnew.B_Mask, center, disk_d_mm)
+            
+        # 4) SMA chinois 6x6 / entraxe interne 4 mm au centre
+        add_sma_china_6x6_inner4mm(board, at_xy=(0.0, 0.0))
 
-        # 4) SMA at center (with square GND pads)
-        add_sma_consma001_cg(board, at_xy=(0.0, 0.0), square_gnd=True)
+
+        # 4bis) SMA at center (with square GND pads)
+        # add_sma_consma001_cg(board, at_xy=(0.0, 0.0), square_gnd=True)
 
         # 5) silkscreen label near rim (move inward a bit so it’s not in the Cu→edge gap)
         inset = 8.0
