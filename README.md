@@ -133,7 +133,7 @@ This project includes a KiCad 8 **action plugin** (`donut_reflector_disk_sma.py`
 - **Circular Edge.Cuts outline**  
 - **Ground planes (F.Cu & B.Cu)** tied to the SMA ground pins  
 - **Optional soldermask opening** (bare copper reflector)  
-- **Centered CONSMA001-C-G SMA footprint** (square GND pads)  
+- **Centered "China 6x6 inner 4mm" or "CONSMA001-C-G" SMA footprint** (square or round GND pads)  
 - **Custom silkscreen label**
 
 ### Steps to Generate Gerbers
